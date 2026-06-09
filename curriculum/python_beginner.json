@@ -1,0 +1,234 @@
+{
+  "course_id": "python-beginner",
+  "course_title": "Beginner Python",
+  "description": "A complete beginner Python course. This file is the BASELINE CURRICULUM: the AI does not invent the course, it transforms, personalizes and gamifies the content below. Replace the placeholder content in each module with your real course material — the structure (concept, learning_objectives, explanation, examples, common_mistakes, exercise_patterns) is what the generator consumes.",
+  "modules": [
+    {
+      "module_id": "variables",
+      "order": 1,
+      "concept": "variables",
+      "title": "Variables and Assignment",
+      "learning_objectives": [
+        "Understand that a variable is a named container for a value",
+        "Assign values to variables with the = operator",
+        "Read the value of a variable after assignment",
+        "Reassign a variable to a new value"
+      ],
+      "explanation": "A variable is a name that refers to a value stored in memory. You create a variable with an assignment statement: name = value. The name goes on the left, the value on the right. Once assigned, you can use the name anywhere you would use the value. Assigning again replaces the old value. Variable names should be lowercase_with_underscores and describe what they hold.",
+      "examples": [
+        "score = 0",
+        "player_name = \"Ada\"",
+        "score = score + 10  # reassignment using the old value",
+        "lives = 3\nlives = lives - 1  # lives is now 2"
+      ],
+      "common_mistakes": [
+        "Writing the value on the left: 10 = score (SyntaxError)",
+        "Using a variable before assigning it (NameError)",
+        "Confusing = (assignment) with == (comparison)"
+      ],
+      "exercise_patterns": [
+        "Assign a given value to a named variable",
+        "Fix a broken assignment statement",
+        "Update a variable based on its current value"
+      ],
+      "difficulty": 1
+    },
+    {
+      "module_id": "types",
+      "order": 2,
+      "concept": "types",
+      "title": "Basic Types: int, float, str, bool",
+      "learning_objectives": [
+        "Distinguish integers, floats, strings and booleans",
+        "Convert between types with int(), float(), str()",
+        "Use type() to inspect a value"
+      ],
+      "explanation": "Every value in Python has a type. Whole numbers are int, decimal numbers are float, text wrapped in quotes is str, and True/False are bool. Types determine what operations make sense: you can add two ints, but adding an int to a str raises a TypeError. Convert explicitly with int(\"5\"), float(3), or str(42).",
+      "examples": [
+        "count = 7          # int",
+        "price = 3.5        # float",
+        "name = \"Lia\"       # str",
+        "ready = True       # bool",
+        "age = int(\"12\")    # str -> int"
+      ],
+      "common_mistakes": [
+        "Adding a number to a string without converting",
+        "Quoting numbers that should be numeric (\"5\" + 1 fails)"
+      ],
+      "exercise_patterns": [
+        "Convert user-style string input to a number and compute with it",
+        "Predict and fix a TypeError"
+      ],
+      "difficulty": 1
+    },
+    {
+      "module_id": "strings",
+      "order": 3,
+      "concept": "strings",
+      "title": "Working with Strings",
+      "learning_objectives": [
+        "Create and concatenate strings",
+        "Use f-strings to build messages from variables",
+        "Use common string methods: upper, lower, strip, replace",
+        "Index and slice strings"
+      ],
+      "explanation": "Strings are sequences of characters. Combine them with + or, better, build them with f-strings: f\"Hello {name}\". Strings have methods: \"abc\".upper() gives \"ABC\". Index characters with s[0] and slice with s[1:4]. Strings are immutable: methods return new strings.",
+      "examples": [
+        "greeting = \"Hello, \" + name",
+        "message = f\"You scored {score} points\"",
+        "shout = text.upper()",
+        "first_letter = word[0]"
+      ],
+      "common_mistakes": [
+        "Forgetting the f prefix on an f-string",
+        "Expecting s.upper() to modify s in place"
+      ],
+      "exercise_patterns": [
+        "Build a formatted message from given variables",
+        "Transform a string using methods"
+      ],
+      "difficulty": 1
+    },
+    {
+      "module_id": "conditionals",
+      "order": 4,
+      "concept": "conditionals",
+      "title": "Making Decisions with if/elif/else",
+      "learning_objectives": [
+        "Write if statements with comparison operators",
+        "Add elif and else branches",
+        "Combine conditions with and / or / not",
+        "Understand indentation defines the block"
+      ],
+      "explanation": "Conditionals let a program choose between paths. An if statement evaluates a condition; if it is True, the indented block below it runs. elif checks another condition when the previous ones were False, and else runs when nothing matched. Comparisons use ==, !=, <, >, <=, >=. Combine conditions with and/or, negate with not. Indentation (4 spaces) is how Python knows which lines belong to the branch.",
+      "examples": [
+        "if fuel_level < 10:\n    status = \"critical\"\nelif fuel_level < 50:\n    status = \"low\"\nelse:\n    status = \"ok\"",
+        "if has_key and door_locked:\n    open_door()"
+      ],
+      "common_mistakes": [
+        "Using = instead of == in a condition",
+        "Forgetting the colon at the end of the if line",
+        "Wrong indentation so a line is outside the branch"
+      ],
+      "exercise_patterns": [
+        "Set a variable to different values depending on a threshold",
+        "Write a multi-branch decision (if/elif/else)",
+        "Fix a condition that uses = instead of =="
+      ],
+      "difficulty": 2
+    },
+    {
+      "module_id": "loops",
+      "order": 5,
+      "concept": "loops",
+      "title": "Repeating Work with Loops",
+      "learning_objectives": [
+        "Use for loops with range() to repeat a fixed number of times",
+        "Loop over the items of a list or string",
+        "Accumulate a result across iterations",
+        "Use while loops for open-ended repetition"
+      ],
+      "explanation": "Loops automate repetition. A for loop runs its block once per item: for i in range(5) runs 5 times with i = 0..4; for item in items visits each element of a collection. A common pattern is the accumulator: start total = 0 before the loop and add to it inside. A while loop repeats as long as its condition stays True — make sure something inside changes the condition or the loop never ends.",
+      "examples": [
+        "total = 0\nfor n in range(1, 6):\n    total = total + n  # total ends at 15",
+        "for letter in \"code\":\n    print(letter)",
+        "countdown = 3\nwhile countdown > 0:\n    countdown = countdown - 1"
+      ],
+      "common_mistakes": [
+        "Off-by-one with range (range(5) is 0..4, not 1..5)",
+        "Resetting the accumulator inside the loop",
+        "while loops that never update their condition"
+      ],
+      "exercise_patterns": [
+        "Sum or count items with an accumulator",
+        "Repeat an action exactly N times",
+        "Fix an infinite while loop"
+      ],
+      "difficulty": 2
+    },
+    {
+      "module_id": "lists",
+      "order": 6,
+      "concept": "lists",
+      "title": "Lists",
+      "learning_objectives": [
+        "Create lists and access items by index",
+        "Append, remove and update items",
+        "Use len() and the in operator",
+        "Loop over lists"
+      ],
+      "explanation": "PLACEHOLDER — replace with your course content. A list is an ordered, mutable collection: inventory = [\"map\", \"rope\"]. Access with inventory[0], add with .append(), remove with .remove(), measure with len().",
+      "examples": [
+        "inventory = [\"map\", \"rope\"]",
+        "inventory.append(\"torch\")",
+        "if \"rope\" in inventory: ..."
+      ],
+      "common_mistakes": ["Index out of range", "Confusing append with extend"],
+      "exercise_patterns": ["Manage a collection: add, remove, check membership"],
+      "difficulty": 2
+    },
+    {
+      "module_id": "dictionaries",
+      "order": 7,
+      "concept": "dictionaries",
+      "title": "Dictionaries",
+      "learning_objectives": [
+        "Create dicts of key-value pairs",
+        "Read, add and update entries",
+        "Use .get() and the in operator",
+        "Loop over keys and values"
+      ],
+      "explanation": "PLACEHOLDER — replace with your course content. A dictionary maps keys to values: stats = {\"hp\": 100, \"mp\": 30}. Read with stats[\"hp\"], write with stats[\"hp\"] = 90, read safely with stats.get(\"xp\", 0).",
+      "examples": ["stats = {\"hp\": 100}", "stats[\"hp\"] -= 10"],
+      "common_mistakes": ["KeyError on missing keys"],
+      "exercise_patterns": ["Store and update structured information"],
+      "difficulty": 3
+    },
+    {
+      "module_id": "functions",
+      "order": 8,
+      "concept": "functions",
+      "title": "Functions",
+      "learning_objectives": [
+        "Define functions with def",
+        "Use parameters and return values",
+        "Call functions and use their results"
+      ],
+      "explanation": "PLACEHOLDER — replace with your course content. Functions package reusable behavior: def heal(amount): return hp + amount. Parameters receive inputs, return sends a result back to the caller.",
+      "examples": ["def double(x):\n    return x * 2"],
+      "common_mistakes": ["Forgetting return (function yields None)"],
+      "exercise_patterns": ["Write a function matching a described behavior and signature"],
+      "difficulty": 3
+    },
+    {
+      "module_id": "debugging",
+      "order": 9,
+      "concept": "debugging",
+      "title": "Basic Debugging",
+      "learning_objectives": [
+        "Read tracebacks to locate errors",
+        "Recognize SyntaxError, NameError, TypeError, IndexError",
+        "Use print() to inspect program state"
+      ],
+      "explanation": "PLACEHOLDER — replace with your course content. A traceback points to the line where Python gave up. Read the last line first (the error type and message), then the line number.",
+      "examples": [],
+      "common_mistakes": [],
+      "exercise_patterns": ["Fix a short broken program so its tests pass"],
+      "difficulty": 3
+    },
+    {
+      "module_id": "final-project",
+      "order": 10,
+      "concept": "final-project",
+      "title": "Mini Final Project",
+      "learning_objectives": [
+        "Combine variables, conditionals, loops, lists and functions in one small program"
+      ],
+      "explanation": "PLACEHOLDER — replace with your course content. The final project combines every previous concept into one capstone exercise, framed by the story's final challenge.",
+      "examples": [],
+      "common_mistakes": [],
+      "exercise_patterns": ["Multi-step program with several tested behaviors"],
+      "difficulty": 4
+    }
+  ]
+}
