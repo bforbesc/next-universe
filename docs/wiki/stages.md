@@ -1,7 +1,10 @@
 # Stages — Product Roadmap
 
-**We build for where the models are going, not where they are.** Each stage
-raises the LLM's responsibility; the safety contract never changes:
+**We build for where the models are going, not where they are.** Stage
+transitions are evidence-driven: the [research track](../../research/README.md)
+(run via the `/tech-research` skill) maintains a dated history of LLM and
+game-stack capability reports, and its recommendations feed this page. Each
+stage raises the LLM's responsibility; the safety contract never changes:
 *generated content is schema-validated, test-verified and persisted before a
 student sees it*. Architecture decisions today must not block later stages —
 when a request belongs to a later stage, build the seam, not the feature.

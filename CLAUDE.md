@@ -19,6 +19,7 @@ any game for any topic (see `docs/wiki/stages.md` — we are in Stage 1).
 | `docs/wiki/game-stack.md` | game feel, graphics, renderer, 3D considerations |
 | `docs/wiki/testing.md` | writing or running tests |
 | `docs/wiki/deployment-aws.md` | deployment, infra, env config |
+| `research/README.md` | tech-capabilities research charter + report history; run a new pass with the `/tech-research` skill |
 
 ## Commands
 
@@ -84,6 +85,8 @@ frontend/
   lib/                 api client, types (schema mirror), harness, pyodideRunner
   public/pyodide-worker.js   sandboxed Python runner
 docs/wiki/             the LLM wiki (start at stages.md)
+research/              tech-capabilities research: charter + dated report history
+.claude/skills/        project skills (tech-research: run a new research pass)
 ```
 
 ## Conventions

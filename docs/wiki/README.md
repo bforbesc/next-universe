@@ -16,6 +16,7 @@ and wiki disagree, trust the code and fix the wiki in the same change.
 | [game-stack.md](game-stack.md) | Game experience track: renderer today, path to richer 2D/3D |
 | [testing.md](testing.md) | TDD workflow, what each suite pins down, how to run |
 | [deployment-aws.md](deployment-aws.md) | AWS mapping, env config, what changes at deploy time (nothing in code) |
+| [../../research/README.md](../../research/README.md) | Tech-capabilities research: charter, report history, `/tech-research` skill |
 
 ## Maintenance rules
 
