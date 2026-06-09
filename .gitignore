@@ -1,0 +1,16 @@
+# python
+__pycache__/
+*.pyc
+.venv/
+*.db
+
+# node / next
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# env & editor
+.env*
+.DS_Store
