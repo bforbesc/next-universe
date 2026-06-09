@@ -20,7 +20,7 @@ project uses to decide when to move between stages and what stack to bet on.
      `frontend/package.json`, `ANTHROPIC_MODEL` default in
      `backend/app/config.py`.
 
-2. **Research each track (A–F from the charter)** with web search. For each
+2. **Research each track (A–G from the charter)** with web search. For each
    track: what changed since the last report's date? New releases (capture
    exact versions + dates), new benchmarks/papers, price changes, capability
    jumps. Prefer primary sources (release notes, papers, official docs) over
@@ -43,6 +43,7 @@ project uses to decide when to move between stages and what stack to bet on.
    ## Track D — Asset generation
    ## Track E — Code execution & sandboxing
    ## Track F — AI in education
+   ## Track G — Learning science & behavioral psychology
    ## Pin drift check            (our versions vs current; upgrade or hold + why)
    ## Recommendations            (table: action | stage affected | effort | verdict: adopt/spike/watch/ignore)
    ## Sources                    (all links used)
@@ -68,3 +69,6 @@ project uses to decide when to move between stages and what stack to bet on.
   for this project is a footnote, not a section.
 - Honest uncertainty: if sources conflict (common with benchmark claims), say
   so rather than picking one.
+- Track G (learning science) has a higher source bar: meta-analyses and
+  systematic reviews from strong outlets; every design recommendation derived
+  from it must name the effect it relies on and its approximate effect size.

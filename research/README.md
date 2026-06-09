@@ -29,7 +29,8 @@ Every report covers these tracks (add a track only by updating this charter):
 | C | **Browser game stacks** | Phaser, three.js/react-three-fiber, Babylon, WebGPU adoption, engine releases relevant to [game-stack.md](../docs/wiki/game-stack.md) |
 | D | **Asset generation** | text/image→2D art, →3D models (Meshy/Tripo/Rodin class), rigging/animation, audio/music gen, licensing |
 | E | **Code execution & sandboxing** | Pyodide releases, WASM runtimes, server-side sandbox options, our CDN pins |
-| F | **AI in education** | adaptive learning evidence, LLM tutoring efficacy studies, market adoption, pedagogy findings worth encoding in prompts |
+| F | **AI in education** | adaptive learning evidence, LLM tutoring efficacy studies, market adoption |
+| G | **Learning science & behavioral psychology** | what makes students actually learn and retain: retrieval practice, spacing, cognitive load (worked examples, Parsons problems), feedback timing, desirable difficulties / productive failure, motivation (self-determination theory, intrinsic vs extrinsic gamification). Findings translate into mission-design rules and schema/engine features. **Source bar is higher here**: prefer meta-analyses and systematic reviews from strong outlets (Educational Psychology Review, Psychological Science, npj Science of Learning, ACM ICER/TOCE/SIGCSE, Computers & Education); blogs are leads only, never evidence. |
 
 ## Methodology (what makes a report trustworthy)
 
@@ -55,4 +56,5 @@ decision (e.g. "do we adopt 3D?").
 
 | Date | Report | Headline |
 |---|---|---|
-| 2026-06-09 | [reports/2026-06-09-tech-capabilities.md](reports/2026-06-09-tech-capabilities.md) | Inaugural: Phaser 4 released; WebGPU production-ready; Genie 3 public; Stage-3 generation well within model capability |
+| 2026-06-09 | [reports/2026-06-09-learning-science.md](reports/2026-06-09-learning-science.md) | Track G inaugural: retrieval/spacing strongest effects → callback + spaced-review design; make hint 1 opt-in; Parsons widget for remediation; intrinsic > extrinsic gamification (SDT) |
+| 2026-06-09 | [reports/2026-06-09-tech-capabilities.md](reports/2026-06-09-tech-capabilities.md) | Inaugural (Tracks A–F): Phaser 4 released; WebGPU production-ready; Genie 3 public; Stage-3 generation well within model capability |

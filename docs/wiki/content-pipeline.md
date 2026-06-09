@@ -62,6 +62,23 @@ automate repetition). Narrative continuity is mechanical: mission N+1's
 `success_feedback.story_feedback` (pinned by
 `tests/test_content.py::test_story_continuity_between_missions`).
 
+## Learning-science design rules
+
+Evidence-backed rules from the [learning-science research track](../../research/reports/2026-06-09-learning-science.md)
+(Track G); each cites its effect there:
+
+- **Story progression is the reward.** No leaderboards/points/badges as primary
+  motivation loops (gamification meta-analyses: those drive extrinsic, not
+  intrinsic motivation). Competence/autonomy/relatedness (SDT) map to
+  difficulty adaptation + progress map / theme choice / mentor character.
+- **Testing is retrieval practice** — keep tests per mission; later missions
+  should also exercise earlier concepts ("callback" pattern).
+- **Struggle before help** (desirable difficulties): hints should be opt-in,
+  escalation preserved; remediation after repeated failure implements
+  "structured guidance after productive failure".
+- **Scaffold novices with worked examples and (later) Parsons-style widgets** —
+  the best-evidenced supports for beginner programmers.
+
 ## Generation paths
 
 - **Template (`fallback.py`)** — deterministic golden content; theme chosen by
