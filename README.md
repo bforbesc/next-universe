@@ -25,7 +25,8 @@ golden content, so the product works end-to-end with no API key at all.
 frontend/  Next.js + Phaser (2D map) + Monaco (editor) + Pyodide (code runner)
 backend/   FastAPI + SQLAlchemy; generation, verification, progress, telemetry
 curriculum/  Baseline course content (data, not code) — one JSON per course
-docs/      Architecture: AWS deployment + platform evolution plan
+docs/wiki/   LLM wiki: stages roadmap, architecture, pipelines (docs for agents)
+CLAUDE.md    Agent entry point: commands, hard rules, repo map
 ```
 
 ## Running locally
@@ -99,7 +100,14 @@ the generator prompts embed it verbatim. Adding a new course = adding a new
 
 ## Where the platform goes next
 
-See `docs/architecture.md` for the AWS deployment mapping and the extension
-points designed in today: format-keyed generators and renderers (new game
-types), course-keyed curricula (new subjects), and the path from
-"LLM fills schemas" to "LLM designs formats" as models improve.
+The roadmap is staged (see `docs/wiki/stages.md`):
+
+1. **Stage 1 (current):** single game, predetermined content — beginner Python.
+2. **Stage 2:** more games with predetermined content for more topics.
+3. **Stage 3:** predetermined topics, LLM-personalized content (machinery
+   already built, activates with `ANTHROPIC_API_KEY`).
+4. **Stage 4:** fully auto-generated games.
+
+Cross-cutting: the game-experience track (`docs/wiki/game-stack.md`) — richer
+2D now, 3D when the data justifies it — without ever coupling content to a
+renderer. The full agent-oriented documentation lives in `docs/wiki/`.
