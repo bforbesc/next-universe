@@ -124,12 +124,21 @@ class Mission(BaseModel):
     next_mission_rules: NextMissionRules = NextMissionRules()
 
 
+class MissionWithSolution(Mission):
+    """Internal generation type: the reference solution is required to verify
+    the hidden tests ('test the tests') and is stored for auditability, but is
+    never exposed through the API."""
+
+    reference_solution: str
+
+
 # ---------------------------------------------------------------------------
 # Adventure (a generated, persisted playthrough)
 # ---------------------------------------------------------------------------
 
 class AdventureCreate(BaseModel):
     student_id: int
+    course_id: str = "python-beginner"
     concepts: Optional[list[str]] = None  # default: vertical slice
 
 
@@ -137,6 +146,9 @@ class AdventureOut(BaseModel):
     id: int
     student_id: int
     generator: Literal["llm", "template"]
+    # Game format identifier. The engine renders formats; generators produce
+    # content for a format. New game types plug in as new format ids.
+    format: str = "mission-map-2d"
     story_arc: StoryArc
     missions: list[Mission]
 

@@ -30,6 +30,7 @@ class Adventure(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     student_id: Mapped[int] = mapped_column(ForeignKey("students.id"))
     generator: Mapped[str] = mapped_column(String(16))  # "llm" | "template"
+    format: Mapped[str] = mapped_column(String(32), default="mission-map-2d")
     story_arc: Mapped[dict] = mapped_column(JSON)
     missions: Mapped[list] = mapped_column(JSON)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
