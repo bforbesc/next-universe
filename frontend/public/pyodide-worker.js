@@ -1,10 +1,10 @@
 /* Pyodide Web Worker: receives { id, program }, runs the program, replies with
  * { id, ok, resultJson | error }. The program is built by lib/harness.ts and
  * ends with a JSON string expression. */
-importScripts("https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js");
+importScripts("https://cdn.jsdelivr.net/pyodide/v0.29.4/full/pyodide.js");
 
 const pyodideReady = loadPyodide({
-  indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/",
+  indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.4/full/",
 });
 
 self.onmessage = async (event) => {

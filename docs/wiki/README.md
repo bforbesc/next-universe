@@ -9,14 +9,15 @@ and wiki disagree, trust the code and fix the wiki in the same change.
 | Page | Topic |
 |---|---|
 | [stages.md](stages.md) | **Start here.** Product roadmap: Stage 1→4, current status, what belongs in which stage |
+| [getting-started.md](getting-started.md) | Technical setup: run, test, env vars, curriculum import |
 | [architecture.md](architecture.md) | System overview, trust boundaries, data flow, extension seams |
-| [content-pipeline.md](content-pipeline.md) | Curriculum → generation (LLM/template) → verification → persistence |
+| [content-pipeline.md](content-pipeline.md) | Curriculum → generation (LLM/template) → verification → persistence; learning-science design rules |
 | [backend.md](backend.md) | FastAPI service: endpoints, data model, services |
 | [frontend.md](frontend.md) | Next.js app: pages, components, Pyodide runner |
 | [game-stack.md](game-stack.md) | Game experience track: renderer today, path to richer 2D/3D |
 | [testing.md](testing.md) | TDD workflow, what each suite pins down, how to run |
 | [deployment-aws.md](deployment-aws.md) | AWS mapping, env config, what changes at deploy time (nothing in code) |
-| [../../research/README.md](../../research/README.md) | Tech-capabilities research: charter, report history, `/tech-research` skill |
+| [../../research/README.md](../../research/README.md) | Research streams: tech capabilities (`/tech-research`) and learning science (`/learning-research`) — charters + report history |
 
 ## Maintenance rules
 

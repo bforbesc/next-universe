@@ -19,7 +19,8 @@ any game for any topic (see `docs/wiki/stages.md` — we are in Stage 1).
 | `docs/wiki/game-stack.md` | game feel, graphics, renderer, 3D considerations |
 | `docs/wiki/testing.md` | writing or running tests |
 | `docs/wiki/deployment-aws.md` | deployment, infra, env config |
-| `research/README.md` | tech-capabilities research charter + report history; run a new pass with the `/tech-research` skill |
+| `docs/wiki/getting-started.md` | technical setup: run, test, env vars, curriculum import |
+| `research/README.md` | research index — two streams: `research/tech/` (`/tech-research` skill) and `research/learning/` (`/learning-research` skill), each with charter + append-only reports |
 
 ## Commands
 
@@ -85,8 +86,8 @@ frontend/
   lib/                 api client, types (schema mirror), harness, pyodideRunner
   public/pyodide-worker.js   sandboxed Python runner
 docs/wiki/             the LLM wiki (start at stages.md)
-research/              tech-capabilities research: charter + dated report history
-.claude/skills/        project skills (tech-research: run a new research pass)
+research/              evidence memory: tech/ and learning/ streams (charter + dated reports each)
+.claude/skills/        project skills: tech-research, learning-research
 ```
 
 ## Conventions

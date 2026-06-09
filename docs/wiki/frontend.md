@@ -21,7 +21,7 @@ Env: `NEXT_PUBLIC_API_URL` (default `http://localhost:8000`).
 | `app/page.tsx` | profile form → `POST /students` → `POST /adventures` → redirect `/play/[id]` |
 | `app/play/[id]/page.tsx` | loads adventure + progress; story intro → map → mission panel → finale |
 | `components/GameCanvas.tsx` | Phaser renderer for the `mission-map-2d` format: themed map, arrow-key player, SPACE/click to enter unlocked nodes; remounts when progress changes |
-| `components/MissionPanel.tsx` | story context → explanation (mentor-voiced) → task → editor → run → feedback/hints/remediation |
+| `components/MissionPanel.tsx` | story context → explanation (mentor-voiced) → task → editor → run → feedback; hints are **opt-in** (button, reveal resets per attempt — desirable-difficulties rule in [content-pipeline.md](content-pipeline.md)); remediation after repeated failure |
 | `components/CodeEditor.tsx` | Monaco (`@monaco-editor/react`), Python, dark |
 | `components/StoryIntro.tsx` | arc presentation overlay |
 | `lib/types.ts` | **mirror of `backend/app/schemas.py`** — keep in sync |

@@ -1,6 +1,6 @@
 # Learning Science Report — 2026-06-09 (focused: Track G inaugural)
 
-Previous report: [2026-06-09-tech-capabilities.md](2026-06-09-tech-capabilities.md) (Tracks A–F) | Current stage: **Stage 1**
+Previous report: [2026-06-09-tech-capabilities.md](../../tech/reports/2026-06-09-tech-capabilities.md) (tech stream) | Current stage: **Stage 1**
 
 Focused pass establishing Track G (learning science & behavioral psychology):
 what the strongest available evidence says about learning and retention, and

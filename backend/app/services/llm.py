@@ -133,6 +133,9 @@ Engineering contract for the exercise:
 - success/failure feedback: technical_feedback teaches; story_feedback advances
   or stalls the story in the mentor's voice.
 - The exercise must only require concepts from this module or earlier ones.
+- Retrieval practice: where natural, the exercise should ALSO exercise one
+  concept from an earlier module in service of the new one (e.g. a loops
+  mission still assigns and updates variables) — never a later concept.
 - Difficulty: respect the student's difficulty_preference ({profile.difficulty_preference}).
 
 Produce a MissionWithSolution for module "{module['module_id']}".

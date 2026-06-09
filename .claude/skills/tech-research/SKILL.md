@@ -1,6 +1,6 @@
 ---
 name: tech-research
-description: Run a tech-capabilities research pass for Next Universe (LLMs, game stacks, asset gen, sandboxing, AI-in-education). Reads the previous report in research/reports/, web-searches each track from the charter, and writes a new dated report with stage-mapped recommendations. Use when asked to run/update research, before stage transitions, or for major stack decisions.
+description: Run a tech-capabilities research pass for Next Universe (LLM capabilities/cost, LLM x game generation, browser game stacks, asset generation, code execution/sandboxing). Reads the charter and previous report in research/tech/, web-searches each track for the delta, writes a new dated report with stage-mapped recommendations and a pin-drift check. Use when asked to research tech/stack capabilities, before stage transitions, or for stack decisions. For learning/pedagogy research use /learning-research instead.
 ---
 
 # Tech Research Pass
@@ -11,25 +11,24 @@ project uses to decide when to move between stages and what stack to bet on.
 ## Procedure
 
 1. **Load context (mandatory, in this order):**
-   - `research/README.md` — the charter: tracks, methodology, report index.
-   - The most recent report in `research/reports/` — your job is the **delta**
-     since that report, not a from-scratch survey.
+   - `research/README.md` — shared rules for all research.
+   - `research/tech/charter.md` — tracks A–E and stream methodology.
+   - The most recent report in `research/tech/reports/` — your job is the
+     **delta** since that report's date, not a from-scratch survey.
    - `docs/wiki/stages.md` — current stage and what each stage needs.
-   - Current pins to check for drift: Pyodide version in
+   - Current pins (for the drift check): Pyodide version in
      `frontend/public/pyodide-worker.js`, Phaser/Next versions in
      `frontend/package.json`, `ANTHROPIC_MODEL` default in
      `backend/app/config.py`.
 
-2. **Research each track (A–G from the charter)** with web search. For each
-   track: what changed since the last report's date? New releases (capture
-   exact versions + dates), new benchmarks/papers, price changes, capability
-   jumps. Prefer primary sources (release notes, papers, official docs) over
-   blog roundups; label vendor marketing as such. If the user asked a focused
-   question (e.g. "research 3D engines"), go deep on the relevant track(s) and
-   do a light delta-check on the rest.
+2. **Research each track (A–E)** with web search: exact versions + dates of
+   new releases, benchmarks/papers, price changes, capability jumps. Prefer
+   primary sources; label vendor marketing. If the user asked a focused
+   question (e.g. "research 3D engines"), go deep on the relevant track(s)
+   and delta-check the rest lightly.
 
-3. **Write the report** at `research/reports/YYYY-MM-DD-tech-capabilities.md`
-   (today's date) with this structure:
+3. **Write the report** at
+   `research/tech/reports/YYYY-MM-DD-tech-capabilities.md` (today's date):
 
    ```markdown
    # Tech Capabilities Report — YYYY-MM-DD
@@ -42,33 +41,26 @@ project uses to decide when to move between stages and what stack to bet on.
    ## Track C — Browser game stacks
    ## Track D — Asset generation
    ## Track E — Code execution & sandboxing
-   ## Track F — AI in education
-   ## Track G — Learning science & behavioral psychology
    ## Pin drift check            (our versions vs current; upgrade or hold + why)
-   ## Recommendations            (table: action | stage affected | effort | verdict: adopt/spike/watch/ignore)
-   ## Sources                    (all links used)
+   ## Recommendations            (table: action | stage | effort | adopt/spike/watch/ignore)
+   ## Sources
    ```
 
-4. **Update the report index** table in `research/README.md` (newest first,
-   one-line headline). Never edit previous reports — corrections belong in the
-   new report's delta section.
+4. **Update the report index** in `research/tech/charter.md` (newest first,
+   one-line headline) and the "Latest headlines" table in `research/README.md`.
+   Never edit previous reports.
 
-5. **Surface, don't silently apply.** If a finding implies a code change
-   (e.g. a pin bump) or a wiki change (e.g. stage criteria, game-stack
-   ladder), list it in Recommendations and tell the user; only apply changes
-   the user asked for. Exception: the README index update is part of this skill.
+5. **Surface, don't silently apply.** Code/wiki changes implied by findings go
+   in Recommendations for the user to approve; only the index updates are part
+   of this skill.
 
-6. Commit the new report + index update (and push if the session's workflow
-   pushes), with a message summarizing the headline findings.
+6. Commit the report + index updates (push if the session's workflow pushes),
+   message summarizing headline findings.
 
 ## Quality bar
 
 - Every claim has a link; versions and dates are exact.
-- Recommendations are stage-mapped and effort-rated; cheapest-first.
-- The "so what" matters more than the "what": a finding without a consequence
-  for this project is a footnote, not a section.
-- Honest uncertainty: if sources conflict (common with benchmark claims), say
-  so rather than picking one.
-- Track G (learning science) has a higher source bar: meta-analyses and
-  systematic reviews from strong outlets; every design recommendation derived
-  from it must name the effect it relies on and its approximate effect size.
+- Recommendations are stage-mapped and effort-rated, cheapest first.
+- The "so what" matters more than the "what" — a finding without a consequence
+  for this project is a footnote.
+- Honest uncertainty: when sources conflict (common for benchmarks), say so.

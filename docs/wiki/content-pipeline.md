@@ -64,8 +64,9 @@ automate repetition). Narrative continuity is mechanical: mission N+1's
 
 ## Learning-science design rules
 
-Evidence-backed rules from the [learning-science research track](../../research/reports/2026-06-09-learning-science.md)
-(Track G); each cites its effect there:
+Evidence-backed rules from the [learning research stream](../../research/learning/charter.md)
+(latest report: [2026-06-09](../../research/learning/reports/2026-06-09-learning-science.md));
+each cites its effect there:
 
 - **Story progression is the reward.** No leaderboards/points/badges as primary
   motivation loops (gamification meta-analyses: those drive extrinsic, not
