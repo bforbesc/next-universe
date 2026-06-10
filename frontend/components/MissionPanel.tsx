@@ -26,6 +26,9 @@ export default function MissionPanel({ adventureId, mission, arc, onClose, onRes
   const [running, setRunning] = useState(false);
   const [run, setRun] = useState<RunResult | null>(null);
   const [submission, setSubmission] = useState<SubmissionResult | null>(null);
+  // Hints are opt-in (desirable difficulties: struggle before help —
+  // see research/learning/). Reveal resets on every new attempt.
+  const [hintRevealed, setHintRevealed] = useState(false);
   const [error, setError] = useState("");
 
   // Hide the Pyodide cold start behind the student's reading time.
@@ -39,6 +42,7 @@ export default function MissionPanel({ adventureId, mission, arc, onClose, onRes
       setRun(result);
       const verdict = await submitAttempt(adventureId, mission.mission_id, code, result);
       setSubmission(verdict);
+      setHintRevealed(false);
       onResult(verdict);
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
@@ -87,7 +91,13 @@ export default function MissionPanel({ adventureId, mission, arc, onClose, onRes
               <p style={{ margin: "0.4rem 0 0" }}>{mission.student_task}</p>
             </div>
 
-            {submission && !passed && submission.hint && (
+            {submission && !passed && submission.hint && !hintRevealed && (
+              <button className="secondary" onClick={() => setHintRevealed(true)}>
+                💡 Ask {mentor} for a hint
+              </button>
+            )}
+
+            {submission && !passed && submission.hint && hintRevealed && (
               <div className="hint-box">
                 💡 <strong>Hint {submission.hint_level}:</strong> {submission.hint}
               </div>

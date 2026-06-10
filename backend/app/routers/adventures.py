@@ -3,7 +3,14 @@ from sqlalchemy.orm import Session
 
 from ..database import get_db
 from ..models import Adventure, MissionState, Student
-from ..schemas import AdventureCreate, AdventureOut, MissionProgress, ProgressOut, StudentProfileIn
+from ..schemas import (
+    FORMAT_MISSION_MAP_2D,
+    AdventureCreate,
+    AdventureOut,
+    MissionProgress,
+    ProgressOut,
+    StudentProfileIn,
+)
 from ..services import generator
 from ..services.curriculum import get_modules
 
@@ -26,18 +33,21 @@ def create_adventure(payload: AdventureCreate, db: Session = Depends(get_db)):
     adventure = Adventure(
         student_id=student.id,
         generator=generator_name,
-        format="mission-map-2d",
+        format=FORMAT_MISSION_MAP_2D,
         story_arc=arc.model_dump(),
         # reference_solution is stored for audit/reproducibility; the API
-        # response model (Mission) strips it before it reaches the client.
+        # response model (Mission) strips it before it reaches the client
+        # (pinned by test_create_adventure_generates_arc_and_missions).
         missions=[m.model_dump() for m in missions],
     )
     db.add(adventure)
-    db.commit()
-    db.refresh(adventure)
+    # flush (not commit) to get the id — adventure + mission states must land
+    # in ONE transaction, or a failure between them leaves progress broken.
+    db.flush()
     for m in missions:
         db.add(MissionState(adventure_id=adventure.id, mission_id=m.mission_id))
     db.commit()
+    db.refresh(adventure)
     return _to_out(adventure)
 
 

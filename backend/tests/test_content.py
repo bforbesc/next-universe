@@ -57,6 +57,15 @@ def test_interest_matching_picks_a_relevant_theme():
     assert arc.theme == "football"
 
 
+def test_keyword_matching_respects_word_boundaries():
+    """'star' must not match inside 'starting'; substring matching would send
+    a music kid to space."""
+    arc, _ = generate_template_adventure(
+        StudentProfileIn(name="Nina", interests=["starting a band"]), MODULES
+    )
+    assert arc.theme == "music"
+
+
 def test_unknown_interest_falls_back_to_generic_theme():
     arc, _ = generate_template_adventure(
         StudentProfileIn(name="Sam", interests=["competitive knitting"]), MODULES

@@ -24,7 +24,12 @@ export default function PlayPage() {
   const [error, setError] = useState("");
 
   const refreshProgress = useCallback(async () => {
-    setProgress(await getProgress(adventureId));
+    try {
+      setProgress(await getProgress(adventureId));
+    } catch (err) {
+      // A failed refresh must not strand the player on a stale map.
+      setError(err instanceof Error ? err.message : String(err));
+    }
   }, [adventureId]);
 
   useEffect(() => {

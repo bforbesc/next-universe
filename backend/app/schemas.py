@@ -136,6 +136,11 @@ class MissionWithSolution(Mission):
 # Adventure (a generated, persisted playthrough)
 # ---------------------------------------------------------------------------
 
+# Game format ids. The engine renders formats; generators produce content for
+# a format. New game types (Stage 2+) add ids here + a renderer + a schema.
+FORMAT_MISSION_MAP_2D = "mission-map-2d"
+
+
 class AdventureCreate(BaseModel):
     student_id: int
     course_id: str = "python-beginner"
@@ -146,9 +151,7 @@ class AdventureOut(BaseModel):
     id: int
     student_id: int
     generator: Literal["llm", "template"]
-    # Game format identifier. The engine renders formats; generators produce
-    # content for a format. New game types plug in as new format ids.
-    format: str = "mission-map-2d"
+    format: str = FORMAT_MISSION_MAP_2D
     story_arc: StoryArc
     missions: list[Mission]
 

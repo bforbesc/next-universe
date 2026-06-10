@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import logging
 
-from ..schemas import MissionWithSolution, StoryArc, StudentProfileIn
+from ..schemas import MissionWithSolution, NextMissionRules, StoryArc, StudentProfileIn
 from .code_verify import verify_program
 from .fallback import generate_template_adventure
 from .llm import generate_llm_adventure, llm_available  # noqa: F401  (patched in tests)
@@ -31,6 +31,17 @@ def _verify_all(missions: list[MissionWithSolution]) -> None:
             raise ContentVerificationError(f"{mission.mission_id}: {error}")
 
 
+def _canonicalize_flow(missions: list[MissionWithSolution]) -> None:
+    """Flow rules are engine-owned. Generators write content; the engine
+    decides progression — overwrite so stored data can never disagree with
+    behavior (the submissions router consults these rules)."""
+    for idx, mission in enumerate(missions):
+        mission.next_mission_rules = NextMissionRules(
+            on_success="finish" if idx == len(missions) - 1 else "next",
+            on_failure="remediate",
+        )
+
+
 def create_adventure(
     profile: StudentProfileIn, modules: list[dict]
 ) -> tuple[str, StoryArc, list[MissionWithSolution]]:
@@ -39,10 +50,12 @@ def create_adventure(
         try:
             arc, missions = generate_llm_adventure(profile, modules)
             _verify_all(missions)
+            _canonicalize_flow(missions)
             return "llm", arc, missions
         except Exception:
             logger.exception("LLM generation failed; falling back to template content")
 
     arc, missions = generate_template_adventure(profile, modules)
     _verify_all(missions)
+    _canonicalize_flow(missions)
     return "template", arc, missions

@@ -41,6 +41,32 @@ def test_missing_name_in_assertion_fails():
     assert not ok
 
 
+def test_subprocess_does_not_inherit_backend_secrets(monkeypatch):
+    """Generated code is executed during verification; it must never run with
+    the backend's secrets in scope (e.g. ANTHROPIC_API_KEY)."""
+    monkeypatch.setenv("SECRET_PROBE", "leaked")
+    ok, error = verify_program(
+        "import os",
+        [
+            HiddenTest(
+                assertion="os.environ.get('SECRET_PROBE') is None",
+                description="backend env is scrubbed from the verifier",
+            )
+        ],
+    )
+    assert ok, error
+
+
+def test_non_boolean_assertion_is_rejected():
+    """Assertions must be boolean expressions, not arbitrary statements/calls
+    masquerading as checks."""
+    ok, error = verify_program(
+        "x = 1",
+        [HiddenTest(assertion="__import__('os').system('echo pwned')", description="malicious")],
+    )
+    assert not ok
+
+
 def test_infinite_loop_is_killed_by_timeout():
     ok, error = verify_program(
         "while True:\n    pass",

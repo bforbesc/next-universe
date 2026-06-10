@@ -57,6 +57,25 @@ def test_verified_llm_content_is_used(monkeypatch):
     assert len(missions) == len(MODULES)
 
 
+def test_engine_owns_next_mission_rules(monkeypatch):
+    """Flow rules are engine-owned: whatever the generator (LLM) wrote into
+    next_mission_rules is canonicalized so stored data can never disagree
+    with engine behavior."""
+    monkeypatch.setattr(generator, "llm_available", lambda: True)
+
+    def llm_with_broken_rules(profile, modules):
+        arc, missions = generator.generate_template_adventure(profile, modules)
+        for m in missions:  # simulate an LLM ignoring flow instructions
+            m.next_mission_rules.on_success = "next"
+            m.next_mission_rules.on_failure = "retry"
+        return arc, missions
+
+    monkeypatch.setattr(generator, "generate_llm_adventure", llm_with_broken_rules)
+    _, _, missions = generator.create_adventure(PROFILE, MODULES)
+    assert [m.next_mission_rules.on_success for m in missions] == ["next", "next", "finish"]
+    assert all(m.next_mission_rules.on_failure == "remediate" for m in missions)
+
+
 def test_llm_prompts_embed_baseline_curriculum():
     """Core product requirement: the LLM transforms the existing course content,
     it does not invent the course."""
