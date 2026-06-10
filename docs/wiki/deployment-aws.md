@@ -48,3 +48,12 @@ here blocks local development — deploy when Stage 1 exit criteria approach
   verification subprocess (`python -I`, timeout) is the only place generated
   code executes — keep it off the request path if it ever becomes a bottleneck
   (move generation to the SQS worker).
+- **Verifier sandboxing.** The verification subprocess runs LLM-generated code,
+  so it is treated as untrusted: it runs with a **scrubbed environment** (no
+  backend secrets — `code_verify.py` passes only `PATH`) and assertions are
+  evaluated with restricted builtins. When the LLM generation path is enabled
+  in production, additionally run it with **no network egress and minimal
+  syscall/filesystem access** (a locked-down container, gVisor/seccomp, or a
+  dedicated low-privilege worker) so that a prompt-injection-induced malicious
+  reference solution cannot reach the network or the host. The default
+  template path executes only trusted, hand-written code.
