@@ -55,7 +55,18 @@ export function runPython(code: string, tests: HiddenTest[]): Promise<RunResult>
       clearTimeout(timer);
       w.removeEventListener("message", onMessage);
       if (data.ok) {
-        resolve(JSON.parse(data.resultJson) as RunResult);
+        try {
+          resolve(JSON.parse(data.resultJson) as RunResult);
+        } catch {
+          // Never leave the promise unresolved — a stuck "Running…" is worse
+          // than an error message.
+          resolve({
+            output: "",
+            error: "The code runner returned an unreadable result. Please try again.",
+            passed: false,
+            results: [],
+          });
+        }
       } else {
         resolve({ output: "", error: data.error, passed: false, results: [] });
       }

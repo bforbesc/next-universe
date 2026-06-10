@@ -10,6 +10,8 @@ in four themes. The LLM generator covers arbitrary themes and modules.
 """
 from __future__ import annotations
 
+import re
+
 from ..schemas import (
     Feedback,
     FinalChallenge,
@@ -638,6 +640,11 @@ THEMES: dict[str, dict] = {
 DEFAULT_THEME = "explorer"
 
 
+def _keyword_in(keyword: str, text: str) -> bool:
+    # Whole-word match: 'star' must not match inside 'starting'.
+    return re.search(rf"\b{re.escape(keyword)}\b", text) is not None
+
+
 def pick_theme(profile: StudentProfileIn) -> str:
     """Explicit preference wins; otherwise match interests against theme
     keywords; otherwise the generic explorer theme."""
@@ -648,7 +655,7 @@ def pick_theme(profile: StudentProfileIn) -> str:
     for interest in profile.interests:
         text = interest.lower()
         for theme, pack in THEMES.items():
-            if any(kw in text for kw in pack["keywords"]):
+            if any(_keyword_in(kw, text) for kw in pack["keywords"]):
                 return theme
     return DEFAULT_THEME
 

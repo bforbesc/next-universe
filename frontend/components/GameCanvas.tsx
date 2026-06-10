@@ -190,9 +190,12 @@ export default function GameCanvas({ theme, nodes, onEnterMission }: Props) {
       cancelled = true;
       game?.destroy(true);
     };
-    // re-create the scene whenever progress changes the node statuses
+    // re-create the scene whenever progress changes a node status (stable
+    // key, immune to unrelated MapNode fields). POC tradeoff: a full Phaser
+    // rebuild (~200ms) per completion; replace with in-scene updates when
+    // the map grows (see docs/wiki/game-stack.md).
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [theme, JSON.stringify(nodes.map((n) => n.status))]);
+  }, [theme, nodes.map((n) => `${n.missionId}:${n.status}`).join("|")]);
 
   return <div ref={hostRef} className="game-wrap" />;
 }
